@@ -21,7 +21,7 @@ $sView = $oFEXP->getFormData( 'VIEW' );
 <?php echo $oFEXP->htmlForm( 'locale' ); ?>
 </DIV>
 <H2>Partager un fichier</H2>
-<P>Afin de partager un fichier, <B>t&eacute;l&eacute;chargez-le (<I>upload</I>) s'il-vous-pla&icirc;t en utilisant le formulaire ci-dessous</B>. Une fois le t&eacute;l&eacute;chargement (<I>upload</I>) termin&eacute;, vous pourrez en changez les options de partage et g&eacute;rer les droits de t&acute;l&eacute;chargement (<I>download</I>).</P>
+<P>Afin de partager un fichier, <B>t&eacute;l&eacute;chargez-le (<I>upload</I>) s'il-vous-pla&icirc;t en utilisant le formulaire ci-dessous</B>. Une fois le t&eacute;l&eacute;chargement (<I>upload</I>) termin&eacute;, vous pourrez en changez les options de partage et g&eacute;rer les droits de t&eacute;l&eacute;chargement (<I>download</I>).</P>
 <DIV CLASS="form">
 <P>( les champs munis d'un <SPAN CLASS="required">*</SPAN> sont obligatoires )</P>
 </DIV>
