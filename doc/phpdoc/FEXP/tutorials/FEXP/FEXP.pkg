@@ -1,0 +1,332 @@
+<refentry id="{@id}">
+
+<refnamediv>
+<refname>PHP File Exchange Platform (PHP-FEXP)</refname>
+<refpurpose>A simple way of exchanging large files via the web</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<author>
+Cedric Dufour
+<authorblurb>{@link http://www.ced-network.net/php-fexp http://www.ced-network.net/php-fexp}</authorblurb>
+</author>
+</refsynopsisdiv>
+
+<graphic fileref="FEXP.png" />
+
+{@toc}
+
+
+<refsect1 id="{@id whatis}">
+<title>What is PHP-FEXP ?</title>
+<para>The <firstterm>PHP File Exchange Platform</firstterm> is a PHP class which allows to implement <emphasis>simple (large) files exchange via web browsers or download managers</emphasis>, as a complement to (size-limited) e-mail messages.</para>
+<para>Sharing a new file requires the following actions:</para>
+<itemizedList>
+<listitem>uploader visits and authenticates on the file exchange server</listitem>
+<listitem>uploader uploads a file, configure its sharing options and specify recipients</listitem>
+<listitem>recipients receive download URL via e-mail</listitem>
+<listitem>recipients recover the file using web browser or download manager</listitem>
+<listitem>file is automatically deleted after expiration delay (or first successfull download if configured to do so)</listitem>
+</itemizedList>
+<para>PHP File Exchange Plarform sole (unusual/streneous) requirement is that authentication MUST be performed by the server hosting the service.</para>
+<para>This requirements allows to:</para>
+<itemizedList>
+<listitem>benefit from the many, reliable and hard-proven authentication backends offered by common HTTP servers (such as <literal>Apache</literal>'s many <literal>mod_auth</literal> modules)</listitem>
+<listitem>protect the PHP code itself (and potential vulnerabilities) from anonymous hacking attempts</listitem>
+</itemizedList>
+<para>For public usage, the <firstterm>PHP Generic Registration Module (PHP-GEREMO)</firstterm> stands as an ideal companion, allowing secure and foolproof registration of users.</para>
+</refsect1>
+
+
+<refsect1 id="{@id specs}">
+<title>Specifications</title>
+
+<refsect2 id="{@id specs_depends}">
+<title>Dependencies</title>
+<itemizedList>
+<listitem>[MUST] <literal>PHP 5.2</literal> or later (it may work on earlier PHP 5 versions; this is untested though)</listitem>
+<listitem>[MUST] PHP <literal>mhash</literal> extension</listitem>
+<listitem>[MUST] PHP <literal>mcrypt</literal> extension</listitem>
+<listitem>[MUST] PHP <literal>PEAR::Mail</literal> and <literal>PEAR::Mail_Mime</literal> extensions (and dependencies)</listitem>
+<listitem>[MUST] PHP <literal>PDO</literal> extension</listitem>
+</itemizedList>
+</refsect2>
+
+<refsect2 id="{@id specs_features}">
+<title>Features/Requirements</title>
+<itemizedList>
+<listitem><emphasis>web (HTTP) file sharing</emphasis> along with automated e-mail notifications</listitem>
+<listitem><emphasis>mandatory authentication by web server</emphasis> (using any supported backend: file, LDAP, MySQL, PostgreSQL, ...)</listitem>
+<listitem>support for <emphasis>SSL (certificate) authentication</emphasis></listitem>
+<listitem><emphasis>file integrity verification</emphasis> (thanks to MD5 checksumming)</listitem>
+<listitem><emphasis>index-friendly usage of backing filesystem</emphasis> (thanks to multi-level directory hierarchy)</listitem>
+<listitem><emphasis>encrypted and user-bound</emphasis> access links</listitem>
+<listitem><emphasis>download speed limit (throttling)</emphasis></listitem>
+<listitem><emphasis>download resume</emphasis> support (<literal>Content-Range</literal> HTTP header)</listitem>
+<listitem><emphasis>fully configurable activity logging</emphasis> via e-mail, PHP log, external log file, system logger (syslog) or database</listitem>
+<listitem><emphasis>localized and customizable</emphasis> HTML, e-mail templates and text messages</listitem>
+</itemizedList>
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id licence}">
+<title>Licensing</title>
+<para>PHP-FEXP is distributed under the <emphasis>GNU General Public Licence (GPL) Version 3</emphasis>. The PHP File Exchange Platform includes all resources which contain the mention <literal>PHP File Exchange Platform (PHP-FEXP)</literal> in their documentation and licensing preamble.</para>
+<para>Other Open Source resources may come bundled with PHP-FEXP release packaging; they are (and must be) used according to their original licence (look for copyright-related files in the folder hierarchy).</para>
+</refsect1>
+
+
+<refsect1 id="{@id download}">
+<title>Downloading</title>
+<para>{@link https://github.com/cedric-dufour/php-fexp/downloads download tree...}</para>
+</refsect1>
+
+
+<refsect1 id="{@id build}">
+<title>Build</title>
+<para><emphasis>NOTE:</emphasis> By &quot;build&quot;, we mean create the necessary tarballs/package required for installation (according to the INSTALL section below) or distribution.</para>
+
+<refsect2 id="{@id build_tree}">
+<title>[MUST] Obtain the source code</title>
+<screen>
+<![CDATA[
+$ git clone https://github.com/cedric-dufour/php-fexp
+]]>
+</screen>
+<para>[OR]</para>
+<screen>
+<![CDATA[
+$ tar -xjf php-fexp-source-@version@.tar.bz2
+$ cd php-fexp-@version@
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_source}">
+<title>[MAY] (Re-)build the source tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-source-tarball
+$ ls -al ../php-fexp-source-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_install}">
+<title>[MAY] Build the installation (release) tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-install-tarball
+$ ls -al ../php-fexp-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_doc}">
+<title>[MAY] Build the documentation tarball</title>
+<screen>
+<![CDATA[
+$ ./debian/rules build-doc-tarball
+$ ls -al ../php-fexp-doc-@version@.tar.bz2
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_debian}">
+<title>[MAY] Build the debian packages</title>
+<screen>
+<![CDATA[
+$ debuild -us -uc -b
+$ ls -al ../php-fexp_@version@_all.deb ../php-fexp-doc_@version@_all.deb
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_debian_source}">
+<title>[MAY] Build the debian source package</title>
+<screen>
+<![CDATA[
+$ debuild -I'.git*' -us -uc -S
+$ ls -al ../php-fexp_@version@.dsc ../php-fexp_@version@.tar.gz
+]]>
+</screen>
+</refsect2>
+
+<refsect2 id="{@id build_all}">
+<title>[SHOULD] Do it all with a single command</title>
+<screen>
+<![CDATA[
+$ ./debian/rules release
+]]>
+</screen>
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id install}">
+<title>Installation</title>
+<para><emphasis>WARNING: PHP-FEXP is actively maintained on Linux. It has not been tested on Windows.</emphasis></para>
+<para><emphasis>NOTE:</emphasis> We assume a previously working Apache/PHP/PEAR setup.</para>
+
+<refsect2 id="{@id install_php}">
+<title>[MUST] Install PHP-FEXP</title>
+
+<refsect3 id="{@id install_php_release}">
+<title>[OR] using the release tarball</title>
+<screen>
+<![CDATA[
+$ INSTALL_DIR='<installation-directory>'
+$ cd "${INSTALL_DIR}"
+$ tar -xjf php-fexp-@version@.tar.bz2
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_php_source}">
+<title>[OR] using the source tarball (and PHP PEAR installer)</title>
+<screen>
+<![CDATA[
+$ tar -xjf php-fexp-source-@version@.tar.bz2
+$ cd php-fexp-@version@
+$ pear install php/packages.xml
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_php_debian}">
+<title>[OR] using the debian package</title>
+<screen>
+<![CDATA[
+$ dpkg -i php-fexp_@version@_all.deb
+]]>
+</screen>
+</refsect3>
+
+</refsect2>
+
+</refsect1>
+
+<refsect1 id="{@id install_contd}">
+<title>(cont'd)</title> <!-- an horrible hack to circumvent a bug in PhpDocumentor docbook parsing -->
+
+<refsect2 id="{@id install_doc}">
+<title>[MAY] Install PHP-FEXP Documentation</title>
+
+<refsect3 id="{@id install_doc_release}">
+<title>[OR] using the documentation tarball</title>
+<screen>
+<![CDATA[
+$ DOC_DIR='<documentation-directory>'
+$ cd "${DOC_DIR}"
+$ tar -xjf php-fexp-doc-@version@.tar.bz2
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_doc_source}">
+<title>[OR] using the source tarball (and PhpDocumentor)</title>
+<screen>
+<![CDATA[
+$ DOC_DIR='<documentation-directory>'
+$ pear install -o PhpDocumentor
+$ tar -xjf php-fexp-source-@version@.tar.bz2
+$ cd php-fexp-@version@
+$ ./util/makedoc FEXP "PHP File Exchange Platform" "${DOC_DIR}" php doc/phpdoc
+]]>
+</screen>
+</refsect3>
+
+<refsect3 id="{@id install_doc_debian}">
+<title>[OR] using the debian package</title>
+<screen>
+<![CDATA[
+$ dpkg -i php-fexp-doc_@version@_all.deb
+]]>
+</screen>
+</refsect3>
+
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id usage}">
+<title>Usage</title>
+<para><emphasis>NOTE:</emphasis> We will assume:</para>
+<itemizedList>
+<listitem>an installation consistent with PHP PEAR standards (in <literal>/usr/share/php/...</literal>)</listitem>
+<listitem>the web server is <literal>Apache</literal></listitem>
+<listitem>PHP-FEXP is located at <literal>https://example.org/fexp/</literal> (corresponding to the <literal>/var/www/fexp/</literal> directory)</listitem>
+</itemizedList>
+
+<refsect2 id="{@id usage_1}">
+<title>[MUST] Create PHP-FEXP's (dynamic) data directory</title>
+<screen>
+<![CDATA[
+$ umask 007
+$ mkdir -p /var/lib/fexp/data
+$ chown -R root.www-data /var/lib/fexp/data
+]]>
+</screen>
+<para>PHP-FEXP's <literal>dir_files</literal> and <literal>dir_logs</literal> configuration parameters must be set accordingly.</para>
+</refsect2>
+
+<refsect2 id="{@id usage_2}">
+<title>[MAY] Create and customize PHP-FEXP's (localized) resources directory</title>
+<screen>
+<![CDATA[
+$ umask 027
+$ cp -r /usr/share/php/FEXP/resources /var/lib/fexp/.
+$ chown -R root.www-data /var/lib/fexp/resources
+]]>
+</screen>
+<para>PHP-FEXP's <literal>dir_resources</literal> configuration parameter must be set accordingly.</para>
+</refsect2>
+
+<refsect2 id="{@id usage_3}">
+<title>[MUST] Create and customize PHP-FEXP's configuration file</title>
+<screen>
+<![CDATA[
+$ umask 027
+$ mkdir -p /etc/php5/fexp
+$ cp /usr/share/php/docs/FEXP/examples/config.php /etc/php5/fexp/config.php
+$ chown -R root.www-data /etc/php5/fexp
+]]>
+</screen>
+<para>Apache's <literal>PHP_FEXP_CONFIG</literal> environment variable must be set accordingly (see below).</para>
+</refsect2>
+
+<refsect2 id="{@id usage_4a}">
+<title>[MUST] Create and customize PHP-FEXP's HTML document file</title>
+<screen>
+<![CDATA[
+$ umask 027
+$ cp /usr/share/php/docs/FEXP/examples/index.php /var/www/fexp/index.php
+$ chown root.www-data /var/www/fexp/index.php
+]]>
+</screen>
+<para>Feel free to modify this file's HTML content to match your visual needs. Do not modify its PHP code though (unless you know what you're doing)!</para>
+</refsect2>
+
+<refsect2 id="{@id usage_5}">
+<title>[MUST] Create PHP-FEXP's SQL backend</title>
+<para><emphasis>SEE:</emphasis> /usr/share/php/docs/FEXP/examples/*.sql</para>
+</refsect2>
+
+<refsect2 id="{@id usage_6}">
+<title>[MUST] Configure Apache's authentication and and PHP settings</title>
+<para><emphasis>SEE:</emphasis> /usr/share/php/docs/FEXP/examples/apache.conf</para>
+</refsect2>
+
+</refsect1>
+
+
+<refsect1 id="{@id documentation}">
+<title>Further documentation</title>
+<para>The full documentation of PHP-FEXP (including source code) is part of this (phpDocumentor-generated) HTML documentation; make sure to browse through the expandable tree located on the left of this text, as well as switch the documentation context using the drop list located on top of this text.</para>
+</refsect1>
+
+</refentry> 

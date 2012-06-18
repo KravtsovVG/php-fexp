@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>FEXP</name>
+ <channel>pear.php.net</channel>
+ <summary>PHP File Exchange Platform (PHP-FEXP)</summary>
+ <description>The PHP File Exchange Platform is a PHP class which allows to implement simple
+(large) files exchange via common web browsers or download managers, as a
+complement to (size-limited) e-mail messages.
+
+Sharing a new file requires the following actions:
+ - uploader visits and authenticates on the file exchange server
+ - uploader uploads a file, configure its sharing options and specify recipients
+ - recipients receive download URL via e-mail
+ - recipients recover the file using web browser or download manager
+ - file is automatically deleted after expiration delay (or first successfull
+   download if configured to do so)
+
+PHP File Exchange Plarform sole (unusual/streneous) requirement is that
+authentication MUST be performed by the server hosting the service.
+This requirements allows to:
+ - benefit from the many, reliable and hard-proven authentication backends
+   offered by common HTTP servers (such as Apache's many 'mod_auth' modules)
+ - protect the PHP code itself (and potential vulnerabilities) from anonymous
+   hacking attempts
+For public usage, the PHP Generic Registration Module (PHP-GEREMO) stands as an
+ideal companion, allowing secure and foolproof registration of users.</description>
+ <lead>
+  <name>Cedric Dufour</name>
+  <user>cdufour</user>
+  <email>cedric.dufour@ced-network.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-06-18</date>
+ <time>10:02:57</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License (GPL) Version 3</license>
+ <notes>(see https://github.com/cedric-dufour/php-fexp for changelog)</notes>
+ <contents>
+  <dir name="/">
+   <file name="README.TXT" role="doc" />
+<!--
+   <file name="INSTALL.TXT" role="doc">
+    <tasks:replace from="@version@" to="version" type="package-info" />
+   </file>
+-->
+   <file name="COPYRIGHT.TXT" role="doc" />
+   <file name="LICENSE.TXT" role="doc" />
+   <file name="FEXP.php" role="php">
+    <tasks:replace from="@version@" to="version" type="package-info" />
+   </file>
+   <dir name="examples">
+    <file name="README.TXT" role="doc" />
+    <file name="config.php" role="doc" />
+    <file name="index.php" role="doc" />
+    <file name="cleanup.php" role="doc" />
+    <file name="mysql.sql" role="doc" />
+    <file name="apache.conf" role="doc" />
+   </dir>
+   <dir name="resources">
+    <file name="README.TXT" role="data" />
+    <dir name="en">
+     <file name="html.php" role="data" />
+     <file name="admin_link.email.tpl" role="data" />
+     <file name="download_link.email.tpl" role="data" />
+     <file name="event_notification.email.tpl" role="data" />
+    </dir>
+    <dir name="fr">
+     <file name="text.php" role="data" />
+     <file name="html.php" role="data" />
+     <file name="admin_link.email.tpl" role="data" />
+     <file name="download_link.email.tpl" role="data" />
+     <file name="event_notification.email.tpl" role="data" />
+    </dir>
+   </dir>
+   <dir name="data">
+    <file name="README.TXT" role="data" />
+   </dir>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <package>
+    <name>PEAR</name>
+    <channel>pear.php.net</channel>
+    <min>1.3.6</min>
+   </package>
+   <package>
+    <name>Mail</name>
+    <channel>pear.php.net</channel>
+   </package>
+   <package>
+    <name>Mail_Mime</name>
+    <channel>pear.php.net</channel>
+   </package>
+ </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-06-18</date>
+   <license uri="http://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License (GPL) Version 3</license>
+   <notes>(see https://github.com/cedric-dufour/php-fexp for changelog)</notes>
+  </release>
+ </changelog>
+</package>

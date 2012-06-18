@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+
+  configure)
+    # Set appropriate permissions
+    chown -R root:www-data /etc/php5/fexp
+    find /etc/php5/fexp -type d -exec chmod 750 {} \;
+    find /etc/php5/fexp -type f -exec chmod 640 {} \;
+    chown root:www-data /var/lib/fexp /var/log/fexp /var/tmp/fexp
+    chmod 2770 /var/lib/fexp /var/log/fexp /var/tmp/fexp
+
+    # Enable apache configuration
+    [ ! -e /etc/apache2/conf.d/fexp.conf ] && ln -s /etc/php5/fexp/apache.conf /etc/apache2/conf.d/fexp.conf
+    echo 'WARNING: Please reload apache configuration to enable PHP-FEXP!'
+    ;;
+
+esac
+
+exit 0
+

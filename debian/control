@@ -1,0 +1,46 @@
+Source: php-fexp
+Section: web
+Priority: optional
+Maintainer: Cedric Dufour <cedric.dufour@ced-network.net>
+Build-Depends: debhelper (>= 5) 
+Build-Depends-Indep: php-pear
+Homepage: http://www.ced-network.net/php-fexp
+
+Package: php-fexp
+Architecture: all
+Depends: libapache2-mod-php5 | php5-cgi, php5-cli, php5-mhash, php5-mcrypt, php-pear
+Recommends: php-mail, php-mail-mime, php5-mysql
+Description: PHP File Exchange Platform (PHP-FEXP)
+ The PHP File Exchange Platform is a PHP class which allows to implement simple
+ (large) files exchange via common web browsers or download managers, as a
+ complement to (size-limited) e-mail messages.
+ .
+ Sharing a new file requires the following actions:
+  - uploader visits and authenticates on the file exchange server 
+  - uploader uploads a file, configure its sharing options and specify recipients
+  - recipients receive download URL via e-mail
+  - recipients recover the file using web browser or download manager
+  - file is automatically deleted after expiration delay (or first successfull
+    download if configured to do so)
+ .
+ PHP File Exchange Plarform sole (unusual/streneous) requirement is that
+ authentication MUST be performed by the server hosting the service.
+ This requirements allows to:
+  - benefit from the many, reliable and hard-proven authentication backends
+    offered by common HTTP servers (such as Apache's many 'mod_auth' modules)
+  - protect the PHP code itself (and potential vulnerabilities) from anonymous
+    hacking attempts
+ For public usage, the PHP Generic Registration Module (PHP-GEREMO) stands as an 
+ ideal companion, allowing secure and foolproof registration of users.
+
+Package: php-fexp-doc
+Architecture: all
+Recommends: php-fexp
+Description: PHP File Exchange Platform (PHP-FEXP) - Documentation
+
+Package: php-fexp-server
+Architecture: all
+Depends: php-fexp
+Recommends: php5-mysql
+Suggests: php-fexp-doc
+Description: PHP File Exchange Platform (PHP-FEXP) - Server Instance

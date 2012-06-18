@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+
+  remove)
+    # Disable apache configuration
+    rm /etc/apache2/conf.d/fexp.conf
+    /etc/init.d/apache2 reload
+    ;;
+
+esac
+
+exit 0
+

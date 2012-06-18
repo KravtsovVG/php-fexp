@@ -1,0 +1,61 @@
+<?php // INDENTING (emacs/vi): -*- mode:php; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab:
+/** PHP File Exchange Platform (PHP-FEXP)
+ *
+ * @package    FEXP
+ * @subpackage Resources_FR
+ */
+$_TEXT['title:file_exchange_platform'] = 'PHP File Exchange Platform (PHP-FEXP)';
+$_TEXT['label:language'] = 'Langue';
+$_TEXT['label:language'] = 'Fuseau horaire';
+$_TEXT['label:file'] = 'Fichier';
+$_TEXT['label:file_size'] = 'Taille';
+$_TEXT['label:file_max_size'] = 'Taille max.';
+$_TEXT['label:file_md5'] = 'MD5';
+$_TEXT['label:upload_user'] = 'Téléchargé par';
+$_TEXT['label:upload_timestamp'] = 'Téléchargé le';
+$_TEXT['label:expire_timestamp'] = 'Expiration';
+$_TEXT['label:option_public'] = 'Publique';
+$_TEXT['label:option_unique'] = 'Unique';
+$_TEXT['label:option_multiple'] = 'Multiple';
+$_TEXT['label:download_user'] = 'Destinataire';
+$_TEXT['label:message'] = 'Message';
+$_TEXT['label:download_start'] = 'Téléc. démarré';
+$_TEXT['label:download_complete'] = 'Téléc. terminé';
+$_TEXT['label:download_usercount'] = 'Destinataires';
+$_TEXT['label:download_count'] = 'Nombre de téléc.';
+$_TEXT['label:download_block'] = 'Bloqué';
+$_TEXT['label:filter'] = 'Filtre';
+$_TEXT['tooltip:file_max_size'] = 'La taille maximume de fichier acceptée par le système. N\'essayez PAS d\'envoyer un fichier plus gros, il SERA ignoré!';
+$_TEXT['tooltip:file_md5'] = 'Si fournie, la somme de contrôle MD5 sera utilisée pour vérifier l\'intégrité du fichier après le téléchargement (upload).';
+$_TEXT['tooltip:expire_timestamp'] = 'Date/heure après laquelle le fichier sera automatiquement effacé du système.';
+$_TEXT['tooltip:option_public'] = 'Permettre à n\'importe quel utilisateur (authentifié) de télécharger (download) le fichier';
+$_TEXT['tooltip:option_unique'] = 'Effacer le fichier imméditement après le téléchargement terminé (seulement pour les fichiers non-publiques et à destinataire unique))';
+$_TEXT['tooltip:option_multiple'] = 'Permettre le téléchargement (download) multiple du fichier par le même destinataire';
+$_TEXT['tooltip:download_user'] = 'Liste des destinataires à qui octroyer le droit de téléchargement (et qui recevront un courriel de notification de téléchargement).';
+$_TEXT['tooltip:message'] = 'Message à ajouter au courriel de notification de téléchargement.';
+$_TEXT['tooltip:filter'] = 'Afficher les fichiers qui correspondent au filtre donné.';
+$_TEXT['button:upload'] = 'Télécharger';
+$_TEXT['button:update'] = 'Mettre à jour';
+$_TEXT['button:delete'] = 'Effacer';
+$_TEXT['button:add'] = 'Ajouter';
+$_TEXT['button:block'] = 'Bloquer';
+$_TEXT['button:unblock'] = 'Débloquer';
+$_TEXT['button:filter'] = 'Filtrer';
+$_TEXT['confirm:delete'] = 'Êtes-vous certain de vouloir effacer le(s) fichier(s) sélétionné(s)?';
+$_TEXT['message:public'] = 'CE FICHIER EST EN ACCÈS PUBLIC. VEUILLEZ S\'IL-VOUS-PLAÎT FAIRE SUIVRE CETTE NOTIFICATION DE TÉLÉCHARGEMENT AUX DESTINATAIRES DÉSIRÉS.';
+$_TEXT['error:internal_error'] = 'Erreur interne. Veuillez s\'il-vous-plaît prendre contact avec l\'administrateur.';
+$_TEXT['error:unsecure_channel'] = 'Canal non sécurisé. Veuillez s\'il-vous-plaît utiliser un canal encrypté (SSL).';
+$_TEXT['error:unauthenticated_channel'] = 'Canal non authentifié. Veuillez s\'il-vous-plaît utiliser un canal authentifié.';
+$_TEXT['error:not_authorized'] = 'Vous n\'êtes pas autorisé à accéder à cette resource ou à effectuer cette action.';
+$_TEXT['error:file_corrupted'] = 'Corruption du fichier lors du télécharghement (upload). Veuillez s\'il-vous-plaît vérifier la somme de contrôle MD5 fournie et essayez à nouveau.';
+$_TEXT['error:file_missing'] = 'Le fichier n\'est plus disponible sur le système.';
+$_TEXT['error:invalid_credentials'] = 'Votre identité ne vous permet pas d\'utiliser ce système.';
+$_TEXT['error:invalid_handle'] = 'Ce lien appartient à un autre utilisateur ou ne vous autorise pas à effectuer cette action.';
+$_TEXT['error:invalid_data'] = 'Données invalides. Veuillez s\'il-vous-plaît prendre contact avec l\'administrateur.';
+$_TEXT['error:invalid_file_size'] = 'La taille du fichier dépasse la valeur maximale admise.';
+$_TEXT['error:invalid_file_exists'] = 'Fichier déjà existant.';
+$_TEXT['error:invalid_email'] = 'Adresse de courriel invalide.';
+$_TEXT['error:invalid_email_whitelist'] = 'Votre addresse de courriel n\'a pas été mise sur liste blanche.';
+$_TEXT['error:invalid_email_blacklist'] = 'Votre addresse de courriel a été mise sur liste noire.';
+$_TEXT['error:invalid_email_relay'] = 'Le partage de fichiers avec ce destinataire n\'est pas autorisé.';
+$_TEXT['error:missing_required_field'] = 'Renseignez s\'il-vous-plaît le champ obligatoire manquant.';
