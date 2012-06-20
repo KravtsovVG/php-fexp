@@ -2641,7 +2641,7 @@ class FEXP
           $sHTML .= '<TD CLASS="data">'.htmlentities( $this->formatBytes($amFileData['file_size'],false).' / '.$this->formatBytes($amFileData['file_size'],true) ).'</TD>';
           $sHTML .= '<TD CLASS="data">'.htmlentities( $amFileData['upload_user'] ).'</TD>';
           $sHTML .= '<TD CLASS="data">'.htmlentities( $amFileData['upload_timestamp'] ).'</TD>';
-          $sHTML .= '<TD CLASS="data">'.htmlentities( $amFileData['expire_timestamp'] ).'</TD>';
+          $sHTML .= '<TD CLASS="data"><SPAN STYLE="COLOR:'.( strtotime( $amFileData['expire_timestamp'] ) > time() ? '#00A000' : '#A00000' ).';">'.htmlentities( $amFileData['expire_timestamp'] ).'</SPAN></TD>';
           $sHTML .= '<TD CLASS="data">'.( $amFileData['option_public'] ? 'x' : '-' ).'</TD>';
           $sHTML .= '<TD CLASS="data">'.( $amFileData['option_unique'] ? 'x' : '-' ).'</TD>';
           $sHTML .= '<TD CLASS="data">'.( $amFileData['option_multiple'] ? 'x' : '-' ).'</TD>';
