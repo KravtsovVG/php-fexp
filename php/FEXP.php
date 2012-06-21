@@ -1384,7 +1384,7 @@ class FEXP
       trigger_error( '['.__METHOD__.'] Failed to open log file; '.$sLogFile, E_USER_WARNING );
       return; // let's not throw an error and block the entire service at this level
     }
-    if( fwrite( $rLogFile, $sMessage."\n" ) === false )
+    if( fwrite( $rLogFile, date('c').'|'.$sMessage."\n" ) === false )
     {
       trigger_error( '['.__METHOD__.'] Failed to open log file; '.$sLogFile, E_USER_WARNING );
     }
