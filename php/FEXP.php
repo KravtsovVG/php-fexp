@@ -1845,17 +1845,25 @@ class FEXP
             throw new Exception( $this->getLocaleText( 'error:file_corrupted' ) );
           }
 
+          // File data
+          $amFileData = array( 'file_handle' => $iFileHandle,
+                               'file_name' => $sFileName,
+                               'file_md5' => $sFileMD5,
+                               'file_size' => $iFileSize,
+                               'upload_user' => $sAuthenticatedUser,
+                               'upload_timestamp' => date( 'Y-m-d H:i:s', $iUploadTimestamp ),
+                               'expire_timestamp' => date( 'Y-m-d H:i:s', $iExpireTimestamp )
+                               );
+
           // Send administrative link
-          $this->mailAdminLink( $sAuthenticatedUser,
-                                array( 'file_handle' => $iFileHandle,
-                                       'file_name' => $sFileName,
-                                       'file_md5' => $sFileMD5,
-                                       'file_size' => $iFileSize,
-                                       'upload_user' => $sAuthenticatedUser,
-                                       'upload_timestamp' => date( 'Y-m-d H:i:s', $iUploadTimestamp ),
-                                       'expire_timestamp' => date( 'Y-m-d H:i:s', $iExpireTimestamp )
-                                       )
-                                );
+          $this->mailAdminLink( $sAuthenticatedUser, $amFileData );
+
+          // Handle public file
+          if( $this->amCONFIG['option_public_default'] )
+          {
+            // Send download link
+            $this->mailDownloadLink( $sAuthenticatedUser, $amFileData, $this->getLocaleText( 'message:public' ), true );
+          }
 
           // Notifification
           $this->notifyEventFileUpload( $iFileHandle, $sFileName, $sAuthenticatedUser, $iFileSize );
