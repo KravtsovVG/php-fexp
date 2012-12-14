@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Cedric Dufour <cedric.dufour@ced-network.net>
 Build-Depends: debhelper (>= 5) 
 Build-Depends-Indep: php-pear
-Homepage: http://www.ced-network.net/php-fexp
+Homepage: http://cedric.dufour.name/software/php-fexp
 
 Package: php-fexp
 Architecture: all

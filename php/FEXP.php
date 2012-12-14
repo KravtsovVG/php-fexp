@@ -25,7 +25,7 @@
  * @author     Cedric Dufour <cedric.dufour@ced-network.net>
  * @license    http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License (GPL) Version 3
  * @version    @version@
- * @link       http://www.ced-network.net/php-fexp
+ * @link       http://cedric.dufour.name/software/php-fexp
  */
 
 /** PHP File Exchange Platform
