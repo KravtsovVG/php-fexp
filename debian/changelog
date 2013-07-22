@@ -1,3 +1,9 @@
+php-fexp (1.0.2) UNRELEASED; urgency=low
+
+  * New version (see https://github.com/cedric-dufour/php-fexp for changelog)
+
+ -- Cedric Dufour <cedric.dufour@idiap.ch>  Mon, 22 Jul 2013 11:30:13 +0200
+
 php-fexp (1.0.1) UNRELEASED; urgency=low
 
   * New version (see https://github.com/cedric-dufour/php-fexp for changelog)
