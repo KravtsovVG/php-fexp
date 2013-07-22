@@ -453,6 +453,7 @@ BEGIN
   WHERE fk = _fk AND vc_Download_user = _vc_Download_user;
 
   UPDATE tb_FEXP_File SET
+    ts_Upload = ts_Upload,  -- DON'T ASK ME!!! Without this line, ts_Upload gets updated to CURRENT_TIMESTAMP...
     i_Download_count = i_Download_count + 1
   WHERE pk = _fk;
 
