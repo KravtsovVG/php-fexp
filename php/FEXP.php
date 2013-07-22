@@ -564,7 +564,7 @@ class FEXP
     }
     catch( PDOException $e )
     {
-      if( $oPDO instanceof PDO )
+      if( !empty( $oPDO ) && $oPDO instanceof PDO )
       {
         $amErrorInfo = $oPDO->errorInfo();
         trigger_error( '['.__METHOD__.'] Failed to connect to database; '.( is_array( $amErrorInfo ) ? $amErrorInfo[2] : 'no error code/info'), E_USER_WARNING );
