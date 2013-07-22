@@ -11,6 +11,14 @@ case "$1" in
     chown root:www-data /var/lib/fexp /var/log/fexp /var/tmp/fexp
     chmod 2770 /var/lib/fexp /var/log/fexp /var/tmp/fexp
 
+    # Adapt logrotate configuration
+    if [ -n "$(which logrotate)" ]; then
+      v="$(logrotate 2>&1 | head -n 1 | cut -d' ' -f2)"
+      if [ -n "${v}" -a "$(echo -e "${v}\n3.8.0" | sort -t'.' -n -k1,1 -k2,2 -k3,3 | head -n 1)" == '3.8.0' ]; then
+        [ -z "$(grep '^\s*su\s' /etc/logrotate.d/fexp)" ] && gsed 's|}|\tsu root www-data\n}|' /etc/logrotate.d/fexp
+      fi
+    fi
+
     # Enable apache configuration
     [ ! -e /etc/apache2/conf.d/fexp.conf ] && ln -s /etc/php5/fexp/apache.conf /etc/apache2/conf.d/fexp.conf
     echo 'WARNING: Please reload apache configuration to enable PHP-FEXP!'
